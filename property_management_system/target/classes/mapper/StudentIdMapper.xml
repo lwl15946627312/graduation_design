@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lwl.mapper.StudentIdMapper">
+
+    <insert id="addMessage" parameterType="com.lwl.pojo.StudentId">
+        insert into studentid(studentId, gymnasiumId) value (#{studentId},#{gymnasiumId})
+    </insert>
+
+    <select id="queryOneMessage" resultType="com.lwl.pojo.StudentId">
+        select * from studentid where studentId=#{studentId}
+    </select>
+
+    <delete id="delOne" parameterType="com.lwl.pojo.StudentId">
+        delete from studentid where studentId=#{studentId}
+    </delete>
+</mapper>

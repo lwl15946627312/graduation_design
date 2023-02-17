@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lwl.mapper.MiscellaneousMapper">
+
+    <select id="adminQueryAllMiscellaneous" resultType="com.lwl.pojo.Miscellaneous">
+        select * from miscellaneous where logo =#{logo}
+    </select>
+
+    <select id="querySelfMiscellaneousByLogo" resultType="com.lwl.pojo.Miscellaneous">
+        select * from miscellaneous where logo = #{logo}
+        and createPerson = #{createPerson} and identity=#{identity}
+    </select>
+
+    <select id="queryReceivedMiscellaneousByLogo" resultType="com.lwl.pojo.Miscellaneous">
+        select * from miscellaneous where logo=#{logo}
+        and look=#{look}
+        <if test="department!=null and department.trim()!=''">
+            and department like #{department}
+        </if>
+    </select>
+
+    <select id="querySomeMiscellaneousByNameDepartment" resultType="com.lwl.pojo.Miscellaneous">
+        select * from miscellaneous where 1=1
+        <if test="createPerson!=null and createPerson.trim()!=''">
+            and createPerson like #{createPerson}
+        </if>
+        <if test="department!=null and department.trim()!=''">
+            and department like #{department}
+        </if>
+    </select>
+
+    <insert id="addMiscellaneousMessage" parameterType="com.lwl.pojo.Miscellaneous">
+        insert into miscellaneous(id, name, department, logo, identity, createPerson, look)
+        value (#{id},#{name},#{department},#{logo},#{identity},#{createPerson},#{look})
+    </insert>
+
+    <update id="updateMiscellaneous" parameterType="com.lwl.pojo.Miscellaneous">
+        update miscellaneous
+        set logo = #{logo}
+        where id=#{id}
+    </update>
+
+    <delete id="delMiscellaneousMessage" parameterType="com.lwl.pojo.Miscellaneous">
+        delete from miscellaneous where id=#{id}
+    </delete>
+</mapper>

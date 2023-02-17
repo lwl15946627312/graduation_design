@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园服务系统</title>
+    <link rel="stylesheet" th:href="@{css/select.css}">
+</head>
+
+<body>
+    <div th:insert="~{comm::siderBar}"></div>
+
+    <div style="width: 80%;
+    height: 90vh;
+    top: 20px;
+    left: 260px;
+    position: relative;">
+
+
+        <div style="position: absolute;top: 50px; left: 100px;">
+            <a style="text-decoration: none;font-size: 20px;" th:href="@{/personalCenter}" >查看个人信息</a>
+        </div>
+        <div style="position: absolute;top: 150px; left: 100px;">
+            <a style="text-decoration: none;font-size: 20px;" th:href="@{/checkAllCurriculum}" >查看课程信息</a>
+        </div>
+        <div style="position: absolute;top: 250px; left: 100px;">
+            <a style="text-decoration: none;font-size: 20px;" th:href="@{/toCheckTodayFoods}" >查看今日菜单</a>
+        </div>
+        <div style="position: absolute;top: 350px; left: 100px;">
+            <a style="text-decoration: none;font-size: 20px;" th:href="@{/toCheckGymnasium}" >查看体育馆</a>
+        </div>
+        <div style="position: absolute;top: 450px; left: 100px;">
+            <a style="text-decoration: none;font-size: 20px;" th:href="@{/toCheckAllBooks}" >查看图书馆</a>
+        </div>
+        <div style="position: absolute;top: 550px; left: 100px;">
+            <a style="text-decoration: none;font-size: 20px;" th:href="@{/toCheckMiscellaneous}" >查看通知</a>
+        </div>
+    </div>
+</body>
+</html>

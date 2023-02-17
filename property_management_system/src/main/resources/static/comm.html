@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园服务系统</title>
+    <link rel="stylesheet" th:href="@{css/select.css}">
+</head>
+
+<body>
+
+<div class="bigbox" th:fragment="siderBar">
+    <script>
+        setInterval("document.getElementById('time').innerHTML = new Date().toLocaleString();", 1000);
+    </script>
+    <!-- 点击效果 -->
+    <div class="label" id="time">时间</div>
+    <input type="checkbox" id="checkbox"/>
+    <label for="checkbox">
+        <a th:href="@{/personalCenter}" th:text="${'欢迎！ '+login+' '+role}"></a>
+    </label>
+    <ul>
+        <li>
+            <img th:src="${'img/'+photo}" style="width: 80px;height: 80px;margin: 0px auto 30px;">
+        </li>
+        <li>
+            <a th:href="@{/checkAllCurriculum}">
+                <span>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;课程</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/toCheckTodayFoods}">
+                <span>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;食堂</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/toCheckGymnasium}">
+                <span>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;体育馆</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/toCheckAllBooks}">
+                <span>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;图书馆</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/toCheckMiscellaneous}">
+                <span>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;通知</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/returnIndex}">
+                <span>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;回到首页</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/exit}">
+                <span>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;退出</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="box04" th:if="${role=='管理员'}">
+        <a th:href="@{/adminCheckAllTeacher}">
+            <span>教师</span>
+        </a>
+    </div>
+    <div class="box05" th:if="${role=='管理员'}">
+        <a th:href="@{/toCheckAllStudent}">
+            <span>学生</span>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

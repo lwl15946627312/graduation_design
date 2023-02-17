@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园服务系统</title>
+    <link rel="stylesheet" th:href="@{css/adminAddStudent.css}">
+    <link rel="stylesheet" th:href="@{css/select.css}">
+</head>
+
+<body>
+
+<div th:insert="~{comm::siderBar}"></div>
+
+<div class="box01">
+    <p>添加课程</p>
+    <form th:action="@{/adminAddCurriculumMessage}" method="post">
+        <scan>书名:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input name="curriculumName" type="text"><br/>
+        <scan>系部:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input name="department" type="text"><br/>
+        <scan>教师:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input name="teacher" type="text"><br/>
+        <scan>选修必修:</scan>
+        <input name="logo" type="text"><br/>
+        <input style="font-size: 30px;left: 200px; position: relative; top: 40px;" type="submit" value="提交">
+    </form>
+
+</div>
+
+</body>
+</html>

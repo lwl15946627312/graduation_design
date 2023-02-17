@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lwl.mapper.BookMapper">
+
+    <select id="queryAllBooks" resultType="com.lwl.pojo.Book">
+        select * from book
+    </select>
+
+    <select id="queryBooksByBookNameOrAuthor" resultType="com.lwl.pojo.Book">
+        select * from book where 1=1
+        <if test="bookName != null and bookName.trim() != ''">
+            and bookName like #{bookName}
+        </if>
+        <if test="author != null and author.trim() != ''">
+            and author like #{author}
+        </if>
+    </select>
+
+    <select id="queryOneBookById" resultType="com.lwl.pojo.Book">
+        select * from book where id = #{id}
+    </select>
+
+    <insert id="adminAddBook" parameterType="com.lwl.pojo.Book">
+        insert into book(id,bookName,author,number)
+        value (#{id},#{bookName},#{author},#{number})
+    </insert>
+
+    <update id="adminUpdateBook" parameterType="com.lwl.pojo.Book">
+        update book
+        set bookName=#{bookName},author=#{author},number=#{number}
+        where id=#{id}
+    </update>
+
+    <delete id="adminDelBook" parameterType="com.lwl.pojo.Book">
+        delete from book where id = #{id}
+    </delete>
+
+</mapper>

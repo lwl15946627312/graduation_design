@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园服务系统</title>
+
+</head>
+<body>
+
+<div style="width: 80%;
+    height: 90vh;
+    top: 20px;
+    left: 260px;
+    position: relative;">
+    <p style="position: relative;
+    font-size: 40px;
+    top: 20px;
+    left: 30px;">学生修改</p>
+    <form th:action="@{/adminUpdateStudent}" method="post">
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" hidden="hidden" name="id" type="text" th:value="${student.getId()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">姓名:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="name" type="text" th:value="${student.getName()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">密码:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="password" type="text" th:value="${student.getPassword()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">出生日期:</scan>
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="dataOfBirth" type="text" th:value="${student.getDataOfBirth()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">身份证号:</scan>
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="IdNumber" type="text" th:value="${student.getIdNumber()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">手机号码:</scan>
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="phone" type="text" th:value="${student.getPhone()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">邮箱:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="email" type="text" th:value="${student.getEmail()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">家庭地址:</scan>
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="address" type="text" th:value="${student.getAddress()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">学号:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="studentNumber" type="text" th:value="${student.getStudentNumber()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">所在院系:</scan>
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="department" type="text" th:value="${student.getDepartment()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">班级:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="studentClass" type="text" th:value="${student.getStudentClass()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">学生来源:</scan>
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="birthplace" type="text" th:value="${student.getBirthplace()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">入校时间:</scan>
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="admissionTime" type="text" th:value="${student.getAdmissionTime()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">寝室:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="dorm" type="text" th:value="${student.getDorm()}"><br/>
+
+        <input style="font-size: 30px;left: 200px; position: relative; top: 40px;" type="submit" value="提交">
+    </form>
+
+</div>
+
+</body>
+</html>

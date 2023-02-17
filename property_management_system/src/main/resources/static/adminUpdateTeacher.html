@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园服务系统</title>
+</head>
+
+<body>
+
+<div style="width: 80%;
+    height: 90vh;
+    top: 20px;
+    left: 260px;
+    position: relative;">
+    <p style="position: relative;
+    font-size: 40px;
+    top: 20px;
+    left: 30px;">修改教师</p>
+    <form th:action="@{/adminUpdateTeacherMessage}" method="post">
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" hidden="hidden" name="id" th:value="${teacher.getId()}">
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">姓名:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="name" type="text" th:value="${teacher.getName()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">密码:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="password" type="text" th:value="${teacher.getPassword()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">手机号码:</scan>
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="phone" type="text" th:value="${teacher.getPhone()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">邮箱:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="email" type="text" th:value="${teacher.getEmail()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">所在院系:</scan>
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="department" type="text" th:value="${teacher.getDepartment()}"><br/>
+        <input style="font-size: 30px;left: 200px; position: relative; top: 40px;" type="submit" value="提交">
+    </form>
+
+</div>
+
+</body>
+</html>

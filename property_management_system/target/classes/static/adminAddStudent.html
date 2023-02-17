@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园服务系统</title>
+    <link rel="stylesheet" th:href="@{css/adminAddStudent.css}">
+    <link rel="stylesheet" th:href="@{css/select.css}">
+</head>
+
+<body>
+
+<div th:insert="~{comm::siderBar}"></div>
+
+<div class="box01">
+    <p>学生注册</p>
+    <form th:action="@{/adminAddStudent}" method="post">
+        <scan>姓名:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input name="name" type="text"><br/>
+        <scan>密码:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input name="password" type="text"><br/>
+        <scan>性别:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input type="radio" name="sex" checked value="男"><scan>男</scan>
+        <input type="radio" name="sex" value="女"><scan>女</scan><br/>
+        <scan>出生日期:</scan>
+        <input name="dataOfBirth" type="text"><br/>
+        <scan>身份证号:</scan>
+        <input name="IdNumber" type="text"><br/>
+        <scan>手机号码:</scan>
+        <input name="phone" type="text"><br/>
+        <scan>邮箱:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input name="email" type="text"><br/>
+        <scan>家庭地址:</scan>
+        <input name="address" type="text"><br/>
+        <scan>学号:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input name="studentNumber" type="text"><br/>
+        <scan>所在院系:</scan>
+        <input name="department" type="text"><br/>
+        <scan>班级:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input name="studentClass" type="text"><br/>
+        <scan>学生来源:</scan>
+        <input name="birthplace" type="text"><br/>
+        <scan>入校时间:</scan>
+        <input name="admissionTime" type="text"><br/>
+        <scan>寝室:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input name="dorm" type="text"><br/>
+
+        <input style="font-size: 30px;left: 200px; position: relative; top: 40px;" type="submit" value="提交">
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园服务系统</title>
+    <link rel="stylesheet" th:href="@{css/page.css}">
+    <link rel="stylesheet" th:href="@{css/select.css}">
+    <link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div th:insert="~{comm::siderBar}"></div>
+
+<div class="box01">
+    <scan>收到的通知</scan>
+
+    <div class="box03">
+        <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+                <th>通知内容</th>
+                <th>归属系</th>
+                <th>角色</th>
+                <th>创建人</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="miscellaneous:${studentPageInfo.list}">
+                <td th:text="${miscellaneous.getName()}"></td>
+                <td th:text="${miscellaneous.getDepartment()}"></td>
+                <td th:text="${miscellaneous.getIdentity()}"></td>
+                <td th:text="${miscellaneous.getCreatePerson()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="as">
+        <div class="as one">
+            当前第<span th:text="${studentPageInfo.pageNum}"></span> 页，
+            共<span th:text="${studentPageInfo.pages}"></span> 页，
+            <span th:text="${studentPageInfo.total}"></span>条记录
+        </div>
+        <ul class="as current" style="list-style: none">
+            <!--th:if="${studentPageInfo.hasPreviousPage}"}-->
+            <li th:if="${studentPageInfo.hasPreviousPage}"}><!--hasPreviousPage默认值为false， 如果有上一页，则不显示首页-->
+                <a th:href="@{{id}?pageNum=(id=${local})}+${1}">首页</a>
+            </li>
+            <li th:if="${studentPageInfo.hasPreviousPage}"><!--hasPreviousPage默认值为false， 如果有上一页，则不显示-->
+                <a th:href="@{{id}?pageNum=(id=${local})}+${studentPageInfo.prePage}">上一页</a>
+            </li>
+            <li th:each="nav:${studentPageInfo.navigatepageNums}"><!--navigatepageNums是一个数组：遍历所有导航页号。 -->
+                <a th:href="@{{id}?pageNum=(id=${local})}+${nav}" th:text="${nav}" th:if="${nav != studentPageInfo.pageNum}"></a><!--如果不是当前页则可以跳转其他页面。遍历展示-->
+                <a th:class="${'active'}" th:if="${nav == studentPageInfo.pageNum}" th:text="${nav}"></a><!--如果是当前页则有样式。遍历 展示-->
+            </li>
+            <li th:if="${studentPageInfo.hasNextPage}"><!--hasNextPage默认值为false， 如果没有下一页，则不显示-->
+                <a th:href="@{{id}?pageNum=(id=${local})}+${studentPageInfo.nextPage}">下一页</a>
+            </li>
+            <li th:if="${studentPageInfo.pageNum < studentPageInfo.pages}"><!--如果当前页小于总页数则不显示尾页 -->
+                <a th:href="@{{id}?pageNum=(id=${local})}+${studentPageInfo.pages}">尾页</a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园服务系统</title>
+    <link rel="stylesheet" th:href="@{css/adminAddStudent.css}">
+    <link rel="stylesheet" th:href="@{css/select.css}">
+</head>
+
+<body>
+
+<div th:insert="~{comm::siderBar}"></div>
+
+<div class="box01">
+    <p>教师注册</p>
+    <form th:action="@{/adminAddTeacherMessage}" method="post">
+        <scan>姓名:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input name="name" type="text"><br/>
+        <scan>密码:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input name="password" type="text"><br/>
+        <scan>性别:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input type="radio" name="sex" checked value="男"><scan>男</scan>
+        <input type="radio" name="sex" value="女"><scan>女</scan><br/>
+        <scan>手机号码:</scan>
+        <input name="phone" type="text"><br/>
+        <scan>邮箱:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input name="email" type="text"><br/>
+        <scan>所在院系:</scan>
+        <input name="department" type="text"><br/>
+        <input style="font-size: 30px;left: 200px; position: relative; top: 40px;" type="submit" value="提交">
+    </form>
+
+</div>
+
+</body>
+</html>

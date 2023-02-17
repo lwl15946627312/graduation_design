@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lwl.mapper.CurriculumMapper">
+
+    <select id="adminQueryAllCurriculumMessage" resultType="com.lwl.pojo.Curriculum">
+        select * from curriculum
+    </select>
+
+    <insert id="adminAddCurriculumMessage" parameterType="com.lwl.pojo.Curriculum">
+        insert into curriculum(id, curriculumName, department, teacher, logo)
+        value (#{id},#{curriculumName},#{department},#{teacher},#{logo})
+    </insert>
+
+    <select id="moreChooseToCheckCurriculumMessage" resultType="com.lwl.pojo.Curriculum">
+        select * from curriculum where 1=1
+        <if test="department!=null and department.trim()!=''">
+            and department like #{department}
+        </if>
+        <if test="curriculumName!=null and curriculumName.trim()!=''">
+            and curriculumName like #{curriculumName}
+        </if>
+        <if test="logo!=null and logo.trim()!=''">
+            and logo like #{logo}
+        </if>
+    </select>
+
+    <delete id="adminDelCurriculumMessage" parameterType="com.lwl.pojo.Curriculum">
+        delete from curriculum where id=#{id}
+    </delete>
+
+    <select id="teacherCheckSelfCurriculumMessage" resultType="com.lwl.pojo.Curriculum">
+        select * from curriculum where department=#{department} and teacher=#{teacher}
+    </select>
+
+    <select id="checkAllChooseCurriculumMessage" resultType="com.lwl.pojo.Curriculum">
+        select * from curriculum where logo=#{logo}
+    </select>
+
+    <select id="checkOneStudentCurriculumMessage" resultType="com.lwl.pojo.Curriculum">
+        select * from curriculum where department=#{department} and logo=#{logo}
+    </select>
+
+    <select id="checkTeacherMessage" resultType="com.lwl.pojo.Curriculum">
+        select department,teacher from curriculum where curriculumName=#{curriculumName}
+    </select>
+</mapper>

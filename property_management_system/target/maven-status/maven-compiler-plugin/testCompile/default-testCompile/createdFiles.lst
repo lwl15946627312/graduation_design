@@ -1,0 +1,6 @@
+com\lwl\utils\RoleTest.class
+com\lwl\data\DruidTest.class
+com\lwl\mapper\StudentMapperTest.class
+com\lwl\mapper\TeacherMapperTest.class
+com\lwl\mapper\AdministratortableMapperTest.class
+com\lwl\PropertyManagementSystemApplicationTests.class

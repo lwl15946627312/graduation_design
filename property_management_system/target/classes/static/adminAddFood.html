@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园服务系统</title>
+    <link rel="stylesheet" th:href="@{css/adminAddStudent.css}">
+    <link rel="stylesheet" th:href="@{css/select.css}">
+</head>
+
+<body>
+
+<div th:insert="~{comm::siderBar}"></div>
+
+<div class="box01">
+    <p>添加菜品</p>
+    <form th:action="@{/adminAddFoodMessage}" method="post" enctype="multipart/form-data">
+        <scan>菜名:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input name="name" type="text"><br/>
+        <scan>照片:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input type="file" name="file" value="请选择你要上传的图片"><br/>
+        <scan>价格:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input name="price" type="text"><br/>
+        <input style="font-size: 30px;left: 200px; position: relative; top: 40px;" type="submit" value="提交">
+    </form>
+
+</div>
+
+</body>
+</html>

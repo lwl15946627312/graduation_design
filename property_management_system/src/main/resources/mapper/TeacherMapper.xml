@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lwl.mapper.TeacherMapper">
+
+    <select id="teacherLogin" resultType="com.lwl.pojo.Teacher">
+        select * from teacher where jobNumber=#{jobNumber} and password=#{password}
+    </select>
+
+    <select id="adminCheckAllTeacher" resultType="com.lwl.pojo.Teacher">
+        select * from teacher
+    </select>
+
+    <insert id="adminAddTeacherMessage" parameterType="com.lwl.pojo.Teacher">
+        insert into teacher(id,photo,department,name,sex,phone,email,jobNumber,password,perms)
+        value (#{id},#{photo},#{department},#{name},#{sex},#{phone},#{email},#{jobNumber},#{password},#{perms})
+    </insert>
+
+    <select id="adminCheckOneStudentById" resultType="com.lwl.pojo.Teacher">
+        select * from teacher where id=#{id}
+    </select>
+
+    <update id="adminUpdateTeacherMessage" parameterType="com.lwl.pojo.Teacher">
+        update teacher
+        set department=#{department},name=#{name},phone=#{phone},email=#{email}
+            ,password=#{password},perms=#{perms}
+        where id=#{id}
+    </update>
+
+    <delete id="adminDelTeacher" parameterType="com.lwl.pojo.Teacher">
+        delete from teacher where id=#{id}
+    </delete>
+
+    <select id="adminCheckAllTeacherByDepartmentOrName" resultType="com.lwl.pojo.Teacher">
+        select * from teacher where 1=1
+        <if test="department!=null and department.trim() != '' ">
+            and department like #{department}
+        </if>
+        <if test="name!=null and name.trim()!='' ">
+            and name like #{name}
+        </if>
+    </select>
+
+    <select id="checkSelfMessage" resultType="com.lwl.pojo.Teacher">
+        select * from teacher where id=#{id}
+    </select>
+
+    <update id="teacherUpdatePassword" parameterType="com.lwl.pojo.Teacher">
+        update teacher
+        set password=#{password}
+        where id=#{id}
+    </update>
+
+    <update id="teacherUploadPhoto" parameterType="com.lwl.pojo.Teacher">
+        update teacher
+        set photo=#{photo}
+        where id=#{id}
+    </update>
+
+    <select id="queryTeacherId" resultType="com.lwl.pojo.Teacher">
+        select * from teacher where department=#{department} and name=#{name}
+    </select>
+
+</mapper>

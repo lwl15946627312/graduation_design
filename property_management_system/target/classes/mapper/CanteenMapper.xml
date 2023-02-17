@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lwl.mapper.CanteenMapper">
+
+    <select id="queryAllFood" resultType="com.lwl.pojo.Canteen">
+        select * from canteen where today='0'
+    </select>
+
+    <select id="todayCanteenFood" resultType="com.lwl.pojo.Canteen">
+        select * from canteen where today='1'
+    </select>
+
+    <insert id="adminAddFoodToCanteen" parameterType="com.lwl.pojo.Canteen">
+        insert into canteen(id, name, photo, price, today)
+        value (#{id},#{name},#{photo},#{price},#{today})
+    </insert>
+
+    <select id="queryOneFoodByName" resultType="com.lwl.pojo.Canteen">
+        select * from canteen where 1=1
+        <if test="name!=null and name.trim()!=''">
+            and name like #{name}
+        </if>
+    </select>
+
+    <delete id="adminDelFoodFromCanteen" parameterType="com.lwl.pojo.Canteen">
+        delete from canteen where id=#{id}
+    </delete>
+
+    <update id="adminDelTodayFood" parameterType="com.lwl.pojo.Canteen">
+        update canteen
+        set today=#{today}
+        where id=#{id}
+    </update>
+
+    <select id="checkOneFoodById" resultType="com.lwl.pojo.Canteen">
+        select * from canteen where id=#{id}
+    </select>
+
+</mapper>

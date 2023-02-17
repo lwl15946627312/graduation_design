@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lwl.mapper.OrderMapper">
+    <select id="queryAllOrderMessage" resultType="com.lwl.pojo.Order">
+        select * from `order`
+    </select>
+
+    <select id="querySelfOrderMessageByNameAndRoleAndDepartment" resultType="com.lwl.pojo.Order">
+        select * from `order` where name=#{name} and role=#{role} and name=#{name}
+    </select>
+
+    <select id="querySomeOrderMessage" resultType="com.lwl.pojo.Order">
+        select * from `order` where 1=1
+        <if test="department!=null and department.trim()!=''">
+            and department like #{department}
+        </if>
+        <if test="role!=null and role.trim()!=''">
+            and role like #{role}
+        </if>
+        <if test="foodName!=null and foodName.trim()!=''">
+        and foodName like #{foodName}
+        </if>
+    </select>
+
+    <insert id="addOrderMessage" parameterType="com.lwl.pojo.Order">
+        insert into `order`(id, name, foodName, price, role, department,photo)
+        value (#{id},#{name},#{foodName},#{price},#{role},#{department},#{photo})
+    </insert>
+
+    <delete id="delOrderMessage" parameterType="com.lwl.pojo.Order">
+        delete from `order` where id=#{id}
+    </delete>
+
+    <select id="querySelfOrderMessage" resultType="com.lwl.pojo.Order">
+        select * from `order` where department=#{department} and name=#{name} and role=#{role}
+    </select>
+</mapper>

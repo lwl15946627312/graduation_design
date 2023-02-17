@@ -1,0 +1,32 @@
+.box01 {
+    width: 80%;
+    height: 90vh;
+    top: 20px;
+    left: 260px;
+    position: relative;
+}
+.box01 p{
+    position: relative;
+    font-size: 40px;
+    top: 20px;
+    left: 30px;
+}
+.box01 scan{
+    position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;
+}
+.box01 input{
+    position: relative;
+    left: 50px;
+    top: 20px;
+    font-size: 20px;
+}
+.box01 a{
+    color: black;
+    position: absolute;
+    font-size: 40px;
+    left: 500px;
+    top: 300px;
+}

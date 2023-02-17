@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lwl.mapper.StudentMapper">
+    <select id="studentLogin" resultType="com.lwl.pojo.Student">
+        select * from student where  studentNumber= #{studentNumber} and password=#{password}
+    </select>
+
+    <select id="queryAllStudent" resultType="com.lwl.pojo.Student">
+        select * from student
+    </select>
+
+    <insert id="addStudent" parameterType="com.lwl.pojo.Student">
+        insert into student(id,name,password,sex,
+                            dataOfBirth, IdNumber, phone,
+                            email, address, studentNumber,
+                            department, studentClass, birthplace,
+                            admissionTime, photo, dorm, evaluate,
+                            classState, bookState, perms)
+        value (#{id},#{name},#{password},#{sex},#{dataOfBirth},#{IdNumber},#{phone},#{email},#{address},#{studentNumber},
+               #{department},#{studentClass},#{birthplace},#{admissionTime},#{photo},#{dorm},#{evaluate},
+               #{classState},#{bookState},#{perms})
+    </insert>
+
+    <update id="adminUpdateStudent" parameterType="com.lwl.pojo.Student">
+        update student
+        set name=#{name},password=#{password},
+            dataOfBirth=#{dataOfBirth}, IdNumber=#{IdNumber}, phone=#{phone},
+            email=#{email}, address=#{address}, studentNumber=#{studentNumber},
+            department=#{department}, studentClass=#{studentClass}, birthplace=#{birthplace},
+            admissionTime=#{admissionTime}, dorm=#{dorm}, evaluate=#{evaluate},
+            classState=#{classState}, bookState=#{bookState}, perms=#{perms}
+        where id=#{id}
+    </update>
+
+    <select id="checkOneStudentById" resultType="com.lwl.pojo.Student">
+        select * from student where id=#{id}
+    </select>
+
+    <delete id="adminDelStudent" parameterType="com.lwl.pojo.Student">
+        delete from student where id=#{id}
+    </delete>
+
+    <select id="selectSomeStudentByDepartmentOrStudentClassOrName" resultType="com.lwl.pojo.Student">
+        select * from student where 1=1
+        <if test="department!=null and department.trim()!='' ">
+            and department like #{department}
+        </if>
+        <if test="studentClass!=null and studentClass.trim()!='' ">
+            and studentClass like #{studentClass}
+        </if>
+        <if test="name!=null and name.trim()!='' ">
+            and name like #{name}
+        </if>
+    </select>
+
+    <select id="checkSelfDepartmentStudent" resultType="com.lwl.pojo.Student">
+        select name,studentNumber,studentClass,phone from student where department=#{department}
+    </select>
+
+    <update id="studentChooseLogoCurriculumName" parameterType="com.lwl.pojo.Student">
+        update student
+        set classState = #{classState}
+        where id=#{id}
+    </update>
+
+    <select id="teacherMoreChooseToCheckStudent" resultType="com.lwl.pojo.Student">
+        select name,studentNumber,studentClass,phone from student
+        where 1=1
+        <if test="studentClass!=null and studentClass.trim()!=''">
+            and studentClass like #{studentClass}
+        </if>
+        <if test="name!=null and name.trim()!=''">
+            and name like #{name}
+        </if>
+        <if test="department!=null and department.trim()!=''">
+            and department like #{department}
+        </if>
+    </select>
+
+    <select id="checkSelfMessage" resultType="com.lwl.pojo.Student">
+        select * from student where id=#{id}
+    </select>
+
+    <update id="studentUpdatePassword" parameterType="com.lwl.pojo.Student">
+        update student set password=#{password} where id=#{id}
+    </update>
+
+    <update id="studentUploadPhoto" parameterType="com.lwl.pojo.Student">
+        update student set photo=#{photo} where id=#{id}
+    </update>
+
+    <update id="studentBorrowBook" parameterType="com.lwl.pojo.Student">
+        update student set bookState=#{bookState} where id=#{id}
+    </update>
+
+    <update id="updateEvaluateMessage" parameterType="com.lwl.pojo.Student">
+        update student set evaluate=#{evaluate} where id=#{id}
+    </update>
+
+</mapper>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园服务系统</title>
+    <link rel="stylesheet" th:href="@{css/page.css}">
+    <link rel="stylesheet" th:href="@{css/select.css}">
+    <link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div th:insert="~{comm::siderBar}"></div>
+
+<div style="width: 80%;
+    height: 90vh;
+    top: 20px;
+    left: 260px;
+    position: relative;">
+    <img th:src="${'img/'+selfMessage.getPhoto()}" style="width: 120px;
+        height: 120px;
+        margin: 0px auto 30px;
+        position: absolute;
+        top: 60px;
+        left: 60px;">
+
+    <scan style="position: absolute;
+        top: 60px; left: 200px; font-size: 20px;">姓名:</scan>
+    <scan style="position: absolute;
+        top: 60px; left: 300px; font-size: 20px;" th:text="${selfMessage.getName()}"></scan>
+    <scan style="position: absolute;
+        top: 100px; left: 200px; font-size: 20px;">性别:</scan>
+    <scan style="position: absolute;
+        top: 100px; left: 300px; font-size: 20px;" th:text="${selfMessage.getSex()}"></scan>
+    <scan style="position: absolute;
+        top: 140px; left: 200px; font-size: 20px;">院系:</scan>
+    <scan style="position: absolute;
+        top: 140px; left: 300px; font-size: 20px;" th:text="${selfMessage.getDepartment()}"></scan>
+    <scan style="position: absolute;
+        top: 180px; left: 200px; font-size: 20px;">手机号码:</scan>
+    <scan style="position: absolute;
+        top: 180px; left: 300px; font-size: 20px;" th:text="${selfMessage.getPhone()}"></scan>
+    <scan style="position: absolute;
+        top: 220px; left: 200px; font-size: 20px;">电子邮件:</scan>
+    <scan style="position: absolute;
+        top: 220px; left: 300px; font-size: 20px;" th:text="${selfMessage.getEmail()}"></scan>
+
+    <a th:href="@{/toUpdatePassword}" style="text-decoration: none;
+        top: 320px;position: absolute;font-size: 20px;
+        left: 160px; color: black;">更改密码</a>
+
+    <scan style="position: absolute;
+        top: 260px; left: 200px; font-size: 20px;">更改头像:</scan>
+    <div style="position: absolute;
+        top: 260px; left: 300px; font-size: 20px;">
+        <form th:action="@{/teacherUpdatePhoto}" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" value="请选择你要上传的图片">
+            <input type="submit" value="上传">
+        </form>
+    </div>
+</div>
+
+
+
+</body>
+</html>

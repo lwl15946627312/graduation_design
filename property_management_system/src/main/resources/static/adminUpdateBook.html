@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园服务系统</title>
+</head>
+
+<body>
+
+<div style="width: 80%;
+    height: 90vh;
+    top: 20px;
+    left: 260px;
+    position: relative;">
+    <p style="position: relative;
+    font-size: 40px;
+    top: 20px;
+    left: 30px;">修改书籍</p>
+    <form th:action="@{/adminUpdateBookMessage}" method="post">
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" hidden="hidden" name="id" th:value="${book.getId()}">
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">书名:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="bookName" type="text" th:value="${book.getBookName()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">作者:</scan>&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="author" type="text" th:value="${book.getAuthor()}"><br/>
+        <scan style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;">数量:</scan>
+        <input style="position: relative;
+    top: 20px;
+    font-size: 20px;
+    left: 50px;" name="number" type="text" th:value="${book.getNumber()}"><br/>
+        <input style="font-size: 30px;left: 200px; position: relative; top: 40px;" type="submit" value="提交">
+    </form>
+</div>
+</body>
+</html>
